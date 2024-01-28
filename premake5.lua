@@ -1,6 +1,7 @@
 project "GLFW"
     kind "StaticLib"
     language "C"
+    staticruntime "On"
 
     targetdir ("%{wks.location}/bin/" .. OutputDir .. "/%{prj.name}")
     objdir ("%{wks.location}/bin-inter/" .. OutputDir .. "/%{prj.name}")
@@ -89,21 +90,18 @@ project "GLFW"
 
     filter "configurations:Debug"
         symbols "On"
-        runtime "Debug"
         optimize "Off"
 
         defines { "_DEBUG", "DEBUG" }
 
     filter "configurations:Release"
         symbols "On"
-        runtime "Release"
         optimize "On"
 
         defines { "NDEBUG" }
 
     filter "configurations:Dist"
         symbols "Off"
-        runtime "Release"
         optimize "On"
 
         defines { "NDEBUG" }
